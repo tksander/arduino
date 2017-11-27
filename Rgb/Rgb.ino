@@ -2,6 +2,7 @@
 Adafruit Arduino - Lesson 3. RGB LED
 */
 
+
 int redPin = 11;
 int greenPin = 10;
 int bluePin = 9;
@@ -18,8 +19,11 @@ void setup()
 
 void loop()
 {
-  allColors();
-  hanukkah();
+//  allColors(100);
+//  hanukkah();
+  randomColor(1000);
+   setColor(255, 255, 255);  // white
+  delay(100);
 }
 
 void setColor(int red, int green, int blue)
@@ -34,27 +38,51 @@ void setColor(int red, int green, int blue)
   analogWrite(bluePin, blue);  
 }
 
-void allColors(void)
+void allColors(int waitMs)
 {
     setColor(255, 0, 0);  // red
-  delay(1000);
+  delay(waitMs);
   setColor(0, 255, 0);  // green
-  delay(1000);
+  delay(waitMs);
   setColor(0, 0, 255);  // blue
-  delay(1000);
+  delay(waitMs);
   setColor(255, 255, 0);  // yellow
-  delay(1000);  
+  delay(waitMs);  
   setColor(80, 0, 80);  // purple
-  delay(1000);
+  delay(waitMs);
   setColor(0, 255, 255);  // aqua
-  delay(1000);
+  delay(waitMs);
 }
 
 void hanukkah(void)
 {
     setColor(0, 0, 255);  // blue
   delay(100);
-    setColor(255, 255, 255);  // white
+    setColor(0, 0, 0);  // white
   delay(100);
+}
+
+void randomColor(int waitMs)
+{
+  genColor();
+  delay(waitMs);
+}
+void genColor()
+{
+  int r, g, b;
+  r = genNumber();
+  g = genNumber();
+  b = genNumber();
+
+  setColor(r, g, b);
+}
+
+int genNumber()
+{
+//  #define UPPER_BOUND;
+  int rando;
+  int UPPERBOUND = 255;
+  rando = random(255);
+  return rando;
 }
 
